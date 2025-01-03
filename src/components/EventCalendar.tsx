@@ -5,6 +5,8 @@ import React from "react";
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import dynamic from 'next/dynamic';
+import NoSSR_Calendar from "./NoSSR_Calendar";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -33,17 +35,15 @@ const events = [
 ];
 
 const EventCalendar = () => {
-  const [value, onChange] = useState<Value>(new Date());
-
   return (
     <div className="bg-white p-4 rounded-md ">
-      <Calendar onChange={onChange} value={value} />
+      <NoSSR_Calendar />
 
         <div className="flex items-center justify-between">
             <h1 className="text-xl font-semibold my-4">Events</h1>
             <Image src="/moreDark.png" alt="" width={20} height={20} />
         </div>
-
+w
       <div className="flex flex-col gap-4">
         {events.map((event) => (
           <div className="p-5 rounded-md border-2 border-gray-100 border-t-4 odd:border-t-lamaSky even:border-t-lamaPurple" key={event.id}>
